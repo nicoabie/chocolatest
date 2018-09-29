@@ -1,4 +1,4 @@
 /node_modules/*
-/dist/*
-!/dist/.js
-!/dist/.d.ts
+/lib/*
+!/lib/.js
+!/lib/.d.ts
