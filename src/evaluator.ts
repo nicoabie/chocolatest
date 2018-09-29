@@ -3,9 +3,9 @@ import { generateContext } from "./context";
 import { generateRunner } from "./test-composer";
 import { LogEntry, Reporter } from "./types";
 
-const generateEvaluatorWithReporter = (reporter: Reporter) => {
+const generateEvaluator = (reporter: Reporter) => {
   return ({ 
-    getTestResults: (src: string, tests: string) => {
+    run: (src: string, tests: string) => {
       const summary = runInNewContext<LogEntry[]>(
         generateRunner(src, tests),
         generateContext()
@@ -16,5 +16,5 @@ const generateEvaluatorWithReporter = (reporter: Reporter) => {
 }
 
 export {
-  generateEvaluatorWithReporter
+  generateEvaluator
 }

@@ -1,4 +1,4 @@
-import { getProxiedWithLogger } from './proxied-assert';
+import { generateProxy } from './proxied-assert';
 import { LogEntry, Assertion, AssertionEntry } from './types';
 
 const expandArgs = (assertion: Assertion): AssertionEntry => {
@@ -29,31 +29,31 @@ const generateContext = () => {
   let testId = 0;
   let assertId = 0;
 
-  const summary: LogEntry[] = [];
+  const logs: LogEntry[] = [];
 
   const test = (title: string, cb: () => void) => {
-    summary.push({'type':'test','name':title,'id':testId})      
+    logs.push({'type':'test','name':title,'id':testId})      
     assertId = 0;
     try{
       cb();
     } catch(e) {
       void(0);  
     }
-    summary.push({'type':'end','test':testId});
+    logs.push({'type':'end','test':testId});
     testId++;
   }
 
   const log = (assertion: Assertion) => {
     const assertionEntry = expandArgs(assertion);
-    summary.push({...assertionEntry, id: assertId++, test: testId});
+    logs.push({...assertionEntry, id: assertId++, test: testId});
   }
 
-  const assert = getProxiedWithLogger(log); 
+  const assert = generateProxy(log); 
 
   return {
     test,
     assert,
-    summary
+    logs
   }
 }
 

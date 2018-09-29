@@ -15,7 +15,7 @@ const applyWrapper = (operator: string, method: (...args: any[]) => any, thisArg
   }
 }
 
-const getProxiedWithLogger = (log: (assertion: Assertion) => void) => {
+const generateProxy = (log: (assertion: Assertion) => void) => {
   return new Proxy(assert,
   {
     apply(target, thisArg, args) {
@@ -31,5 +31,5 @@ const getProxiedWithLogger = (log: (assertion: Assertion) => void) => {
 }
 
 export {
-  getProxiedWithLogger
+  generateProxy
 } 

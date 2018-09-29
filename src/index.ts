@@ -1,4 +1,4 @@
 import { Reporter } from "./reporter";
-import { generateEvaluatorWithReporter } from "./evaluator";
+import { generateEvaluator } from "./evaluator";
 
-export { Reporter, generateEvaluatorWithReporter}
+export { Reporter, generateEvaluator}
