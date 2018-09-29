@@ -1,9 +1,9 @@
 {
-  "name": "matecocido",
+  "name": "chocolatest",
   "version": "0.0.1",
   "description": "A simple and tiny test framework that evaluates synchronous javascript (for now) in the browser",
-  "main": "lib/matecocido.js",
-  "module": "lib/matecocido.esm.js",
+  "main": "lib/chocolatest.js",
+  "module": "lib/chocolatest.esm.js",
   "typings": "lib/index.d.ts",
   "files": [
     "lib"

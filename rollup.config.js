@@ -3,8 +3,8 @@ const external = [ 'assert', 'vm-browserify' ]
 export default [{
   input: 'lib/es5/index.js',
   output: {
-    name: 'matecocido',
-    file: 'lib/matecocido.js',
+    name: 'chocolatest',
+    file: 'lib/chocolatest.js',
     format: 'cjs'
   },
   context: 'window',
@@ -18,7 +18,7 @@ export default [{
 },{
   input: 'lib/es6/index.js',
   output: {
-    file: 'lib/matecocido.esm.js',
+    file: 'lib/chocolatest.esm.js',
     format: 'esm'
   },
   external
