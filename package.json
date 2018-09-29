@@ -1,10 +1,20 @@
 {
   "name": "matecocido",
   "version": "0.0.1",
-  "description": "A simple and tiny test framework that evaluates javascript in the browser",
-  "main": "index.js",
+  "description": "A simple and tiny test framework that evaluates synchronous javascript (for now) in the browser",
+  "main": "dist/matecocido.js",
+  "module": "dist//matecocido.esm.js",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "rimraf dist",
+    "build": "npm run compile:es5 && npm run compile:es6 && npm run bundle",
+    "compile:es5": "tsc --module es6 --target es5 --outDir dist/es5",
+    "compile:es6": "tsc --module es6 --target es6 --outDir dist/es6",
+    "bundle": "rollup --config rollup.config.js"
   },
   "keywords": [
     "browser",
@@ -15,6 +25,10 @@
   "author": "nicoabie",
   "license": "MIT",
   "devDependencies": {
+    "rimraf": "^2.6.2",
+    "rollup": "^0.66.2",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-node-resolve": "^3.4.0",
     "typescript": "^3.0.3"
   },
   "dependencies": {

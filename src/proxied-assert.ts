@@ -1,5 +1,7 @@
 import { Assertion } from './types';
-import { assert } from 'assert';
+import * as assert from 'assert';
+
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
 const applyWrapper = (operator: string, method: (...args: any[]) => any, thisArg: any, args: any[], log: (assertion: Assertion) => void) => {
   try {
@@ -19,7 +21,7 @@ const getProxiedWithLogger = (log: (assertion: Assertion) => void) => {
     apply(target, thisArg, args) {
       return applyWrapper('assert', target, thisArg, args, log);
     },
-    get(target, propKey: string) {
+    get(target, propKey: keyof Omit<typeof assert, 'AssertionError'>) {
       const origMethod = target[propKey];
       return function (...args: any[]) {
         return applyWrapper(propKey, origMethod, target, args, log);

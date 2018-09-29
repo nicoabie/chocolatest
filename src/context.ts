@@ -25,7 +25,7 @@ const expandArgs = (assertion: Assertion): AssertionEntry => {
   return assertionEntry;
 }
 
-const generate = () => {
+const generateContext = () => {
   let testId = 0;
   let assertId = 0;
 
@@ -48,13 +48,15 @@ const generate = () => {
     summary.push({...assertionEntry, id: assertId++, test: testId});
   }
 
+  const assert = getProxiedWithLogger(log); 
+
   return {
     test,
-    assert: getProxiedWithLogger(log),
+    assert,
     summary
   }
 }
 
 export {
-  generate
+  generateContext
 }

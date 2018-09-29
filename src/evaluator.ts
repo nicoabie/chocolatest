@@ -1,16 +1,16 @@
-import * as vm from "vm-browserify";
-import * as context from "./context";
+import { runInNewContext } from "vm-browserify";
+import { generateContext } from "./context";
 import { generateRunner } from "./test-composer";
 import { LogEntry, Reporter } from "./types";
 
 const generateEvaluatorWithReporter = (reporter: Reporter) => {
   return ({ 
     getTestResults: (src: string, tests: string) => {
-      const summary = vm.runInNewContext<LogEntry[]>(
+      const summary = runInNewContext<LogEntry[]>(
         generateRunner(src, tests),
-        context.generate()
+        generateContext()
       );
-      return reporter.generateTestsResults(summary);
+      return reporter.generateReport(summary);
     }
   });
 }

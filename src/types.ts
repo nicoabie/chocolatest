@@ -27,7 +27,7 @@ export interface AssertionEntry extends Assertion {
 }
 
 export interface Reporter {
-  generateTestsResults: (logs: LogEntry[]) => Report;
+  generateReport: (logs: LogEntry[]) => Report;
 }
 
 export interface Report {
