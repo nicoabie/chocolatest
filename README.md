@@ -110,6 +110,14 @@ interface AssertionEntry {
 
 From here you can format the report the way you like and show it to the user.
 
+## How it works (in case you want to know)
+
+It leverages on the use of the [commonjs-assert module](https://github.com/browserify/commonjs-assert) by browserify as long with the
+[vm-browserify module](https://github.com/browserify/vm-browserify) that allows to\
+safely execute javascript as a string within a given context and some meta programming using javascript's Proxy object.\
+You can a look to the src, specifically [proxied-assert.ts](src/proxied-assert.ts).\
+In case you want to know more about proxies and meta programming I deeply recommend [Dr. Axel Rauschmayer's post](http://2ality.com/2014/12/es6-proxies.html).
+
 ## License
 
 MIT © [Nico Gallinal](https://github.com/nicoabie)
