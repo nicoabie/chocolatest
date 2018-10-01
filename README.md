@@ -73,7 +73,16 @@ const report = evaluator.run(src, tests);
   </div>
 </html>
 
-## Report object
+## API
+
+The assertion api is best described in one of the two dependencies chocolatest uses.\
+[Browserify's commonjs-assert module](https://github.com/browserify/commonjs-assert)
+
+And the method to group assertions is ```test(name: string, body: () => void)```\
+as you have already seen in the example. Note that you can have more than one call to\
+test for every run.
+
+### Report object
 
 ```typescript
 interface Report {
