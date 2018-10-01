@@ -1,6 +1,6 @@
 {
   "name": "chocolatest",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple and tiny test framework that evaluates synchronous javascript (for now) in the browser",
   "bugs": {
     "url": "https://github.com/nicoabie/chocolatest/issues"
